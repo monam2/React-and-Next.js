@@ -8,7 +8,6 @@ function App() {
     <>
       <Header />
       <Body />
-      <h1>React</h1>
       <Footer />
     </>
   );
