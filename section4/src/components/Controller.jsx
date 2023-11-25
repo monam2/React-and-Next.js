@@ -1,6 +1,11 @@
+import useUpdate from '../../hooks/useUpdate'
 import './Controller.css'
 
 export default function Controller({onClickButton, resetButton}) {
+
+    useUpdate(()=>{
+        console.log("Contoller 컴포넌트 업데이트")
+    })
 
     return (
         <div>
