@@ -35,10 +35,28 @@ function App() {
       id : idRef.current++,
       isDone : false,
       content,
-      createdDate : new Date().getTime,
+      createdDate : new Date().getTime(),
     }
 
     setTodos([...todos, newTodo]);
+  }
+
+  const onUpdate = (targetId)=>{
+    setTodos(
+      todos.map(todo=>{
+        if(todo.id === targetId) { // isDone의 값을 바꿔주면 됨
+          return {...todo, isDone : !todo.isDone}
+        } else { // isDone의 값을 내버려두면 됨
+          return todo;
+        }
+      })
+    )
+  };
+
+  const onDelete = (targetId) =>{
+    setTodos(
+      todos.filter((todo)=>todo.id!==targetId)
+    )
 
   }
 
@@ -46,7 +64,7 @@ function App() {
     <div className="App">
       <Header />
       <TodoEditor onCreate={onCreate}/>
-      <TodoList />
+      <TodoList todos={todos} onUpdate={onUpdate} onDelete={onDelete}/>
     </div>
   )
 }
